@@ -10,4 +10,4 @@
 4) 결과자료 (1주) : ~11/8
 
 - 자료수집 1차(~9/22) :
-![](https://drive.google.com/file/d/1riWsRT_-jhRidhn90ClLNNHVfUGL5aeP/view?usp=sharing)
+![](https://github.com/Jungsan005/Bigdata-Class/blob/master/ref/%EC%9D%B4%EB%AF%B8%EC%A7%80_2020-09-18_007.png?raw=true)
