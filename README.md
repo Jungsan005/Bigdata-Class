@@ -8,3 +8,6 @@
 2) 분석/인사이트 도출 (2주) : ~10/16
 3) 어플리케이션 (Front/Back)(2주) : ~ 10/30
 4) 결과자료 (1주) : ~11/8
+
+- 자료수집 1차(~9/22) :
+![](https://drive.google.com/file/d/1riWsRT_-jhRidhn90ClLNNHVfUGL5aeP/view?usp=sharing)
