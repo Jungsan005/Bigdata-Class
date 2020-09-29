@@ -1,0 +1,111 @@
+url ="http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvc AptTrade?"
+
+url ="http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvc AptRent?"
+
+url ="http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvc RHTrade?"
+
+url ="http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvc RHRent?"
+
+url ="http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvc SHTrade?"
+
+url ="http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvc SHRent?"
+
+url ="http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvc OffiTrade?"
+
+url ="http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvc OffiRent?"
+
+euc-kr
+
+CREATE TABLE `01_AptTrade_csv` (
+  `거래금액` int(11) DEFAULT NULL,
+  `건축년도` varchar(1024) DEFAULT NULL,
+  `년` varchar(1024) DEFAULT NULL,
+  `법정동` varchar(1024) DEFAULT NULL,
+  `아파트` varchar(1024) DEFAULT NULL,
+  `월` varchar(1024) DEFAULT NULL,
+  `일` varchar(1024) DEFAULT NULL,
+  `전용면적` float DEFAULT NULL,
+  `지번` varchar(1024) DEFAULT NULL,
+  `지역코드` varchar(1024) DEFAULT NULL,
+  `층` varchar(1024) DEFAULT NULL
+) ENGINE=InnoDB D
+
+
+CREATE TABLE `02_AptRent_csv` (
+  `건축년도` varchar(1024) DEFAULT NULL,
+  `년` varchar(1024) DEFAULT NULL,
+  `법정동` varchar(1024) DEFAULT NULL,
+  `보증금액` int(11) DEFAULT NULL,
+  `아파트` varchar(1024) DEFAULT NULL,
+  `월` varchar(1024) DEFAULT NULL,
+  `월세금액` int(11) DEFAULT NULL,
+  `일` varchar(1024) DEFAULT NULL,
+  `전용면적` float DEFAULT NULL,
+  `지번` varchar(1024) DEFAULT NULL,
+  `지역코드` varchar(1024) DEFAULT NULL,
+  `층` varchar(1024) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+
+CREATE TABLE `05_SHTrade_csv` (
+  `거래금액` int(11) DEFAULT NULL,
+  `년` varchar(1024) DEFAULT NULL,
+  `대지면적` float DEFAULT NULL,
+  `법정동` varchar(1024) DEFAULT NULL,
+  `연면적` float DEFAULT NULL,
+  `월` varchar(1024) DEFAULT NULL,
+  `일` varchar(1024) DEFAULT NULL,
+  `주택유형` varchar(1024) DEFAULT NULL,
+  `지역코드` varchar(1024) DEFAULT NULL,
+  `건축년도` varchar(1024) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+
+CREATE TABLE `07_OffiTrade_csv` (
+  `거래금액` int(11) DEFAULT NULL,
+  `건축년도` varchar(1024) DEFAULT NULL,
+  `년` varchar(1024) DEFAULT NULL,
+  `단지` varchar(1024) DEFAULT NULL,
+  `법정동` varchar(1024) DEFAULT NULL,
+  `시군구` varchar(1024) DEFAULT NULL,
+  `월` varchar(1024) DEFAULT NULL,
+  `일` varchar(1024) DEFAULT NULL,
+  `전용면적` float DEFAULT NULL,
+  `지번` varchar(1024) DEFAULT NULL,
+  `지역코드` varchar(1024) DEFAULT NULL,
+  `층` varchar(1024) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+#####################################################
+
+delete from `03_RHTrade_csv`; 
+
+use bigdata;
+
+LOAD DATA Local INFILE 'E:/00. team_project/03.RHTrade/RHTrade_25.강동구_2010_2019.csv'
+    INTO TABLE 03_RHTrade_csv 
+    CHARACTER SET euckr
+    FIELDS TERMINATED BY ','  -- 각 필드 구분 문자 (예: CSV라면 컴마)
+    OPTIONALLY ENCLOSED BY '"'  -- 필요할 경우, 따옴표(")로 구분
+    LINES TERMINATED BY '\n'
+    IGNORE 1 LINES  -- 제목이 포함된 첫 번째 줄은 생략
+    ( @col1 ,
+  `건축년도` ,
+  `년` ,
+  `대지권면적`,
+  `법정동` ,
+  `연립다세대` ,
+  `월` ,
+  `일` ,
+  `전용면적` ,
+  `지번` ,
+  `지역코드`,
+  `층` )
+  set `거래금액` = CAST(REPLACE(@col1, ',', '') AS INT) ;  -- 컬럼명
+  
+  
+  select * from `03_RHTrade_csv` rc 
+  where 법정동 = '명일동';
+  
+  
+  
+  
